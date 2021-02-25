@@ -16,11 +16,14 @@
 #
 ## Решение:
 
+require 'digest'
 
-mode = "r"
-file = File.open("data/3.txt", mode)
-a = file.read
-file.close
+o = gets.chomp
+i = 0
+md5 = Digest::MD5.hexdigest o + i.to_s
+while md5[0,5] != '00000'
+  i +=1
+  md5 = Digest::MD5.hexdigest o + i.to_s
+end
 
-s = a.split(' ')
-puts
+puts i
