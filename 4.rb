@@ -19,11 +19,10 @@
 # Функция поиска длины, высоты, ширины
 def length_height_width(a)
   a = a.split('x')
+  mn=0
+  mx=0
   min = a[0].to_i
   max = a[0].to_i
-  aver = a[0].to_i
-  mn = 0
-  mx = 0
   for i in 0..(a.length - 1)
     if a[i].to_i < min
       min = a[i].to_i
@@ -37,8 +36,8 @@ def length_height_width(a)
     end
   end
   for i in 0..(a.length - 1)
-    if i =! mx and i =! mn
-      aver = a[i]
+    if i != mn  and i != mx
+      aver = a[i].to_i
     end
   end
   lhw = [min, aver, max]
