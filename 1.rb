@@ -16,6 +16,18 @@
 #
 ## Решение:
 
+mode = "r"
+file = File.open("data/1.txt", mode)
+a = file.read
+file.close
+s = 0
 
+for i in 0..a.length
+  if a[i] == "("
+    s += 1
+  elsif a[i] == ")"
+    s -= 1
+  end
+end
 
-
+puts s

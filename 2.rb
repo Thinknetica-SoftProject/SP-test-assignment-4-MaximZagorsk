@@ -16,3 +16,11 @@
 #
 ## Решение:
 
+
+mode = "r"
+file = File.open("data/3.txt", mode)
+a = file.read
+file.close
+
+s = a.split(' ')
+puts

@@ -16,4 +16,49 @@
 #
 ## Решение:
 
+# Функция поиска длины, высоты, ширины
+def length_height_width(a)
+  a = a.split('x')
+  min = a[0].to_i
+  max = a[0].to_i
+  aver = a[0].to_i
+  for i in 0..(a.length - 1)
+    if a[i].to_i < min
+      min = a[i].to_i
+    end
+  end
+  for i in 0..(a.length - 1)
+    if a[i].to_i > max
+      max = a[i].to_i
+    end
+  end
+  for i in 0..(a.length - 1)
+    if min < a[i].to_i and max > a[i].to_i
+      aver = a[i].to_i
+    end
+  end
+  lhw = [min, aver, max]
+  return  lhw
+end
+
+# Функция вычисления оберточной бумаги на один подарок
+def calculation_of_paper(a)
+  length = a[0]
+  height = a[1]
+  weight = a[2]
+  cop = 2*weight*length + 2*length*height + 2*height*weight + length*height
+  return cop
+end
+
+mode = "r"
+file = File.open("data/4.txt", mode)
+s = 0
+IO.foreach("data/4.txt") do |line|
+  lhw = length_height_width(line)
+  s+= calculation_of_paper(lhw)
+end
+file.close
+
+# Вывод сколько понадобиться оберточной бумаги
+puts s
 
