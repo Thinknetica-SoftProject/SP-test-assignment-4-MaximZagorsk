@@ -22,19 +22,23 @@ def length_height_width(a)
   min = a[0].to_i
   max = a[0].to_i
   aver = a[0].to_i
+  mn = 0
+  mx = 0
   for i in 0..(a.length - 1)
     if a[i].to_i < min
       min = a[i].to_i
+      mn = i
     end
   end
   for i in 0..(a.length - 1)
     if a[i].to_i > max
       max = a[i].to_i
+      mx = i
     end
   end
   for i in 0..(a.length - 1)
-    if min < a[i].to_i and max > a[i].to_i
-      aver = a[i].to_i
+    if i =! mx and i =! mn
+      aver = a[i]
     end
   end
   lhw = [min, aver, max]
@@ -45,17 +49,19 @@ end
 def calculation_of_paper(a)
   length = a[0]
   height = a[1]
-  weight = a[2]
-  cop = 2*weight*length + 2*length*height + 2*height*weight + length*height
+  width = a[2]
+  cop = 2*width*length + 2*length*height + 2*height*width + length*height
   return cop
 end
 
 mode = "r"
 file = File.open("data/4.txt", mode)
 s = 0
+i= 1
 IO.foreach("data/4.txt") do |line|
   lhw = length_height_width(line)
-  s+= calculation_of_paper(lhw)
+  s= s + calculation_of_paper(lhw)
+  i +=1
 end
 file.close
 
